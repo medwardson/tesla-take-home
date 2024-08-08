@@ -7,6 +7,10 @@ npm install
 npm run start
 ```
 
+### Troubleshooting
+
+On windows, I found issues with `npm run start` not working due to `PORT=8000` not being recognized. If this is the case, you can remove the `PORT=8000` from the `start` script in the `package.json` file and it will run on port 3000.
+
 ## Problem Statement
 
 Given a predefined list of batteries, their cost, size, and capacity, demonstrate to a potenital customer what their costs, land requirements, and energy will be for a given selection of batteries.
