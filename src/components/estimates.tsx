@@ -26,18 +26,32 @@ export const Estimates = ({ deviceCounts }: EstimatesProps) => {
     }, [deviceCounts]);
 
     return (
-        <Card className="h-max m-4 min-w-60">
-            <div className="flex">
-                <div className="flex flex-col items-start m-4">
-                    <p>Estimated Cost: {formatMoney(cost)}</p>
-                    <p>Total Energy: {formatEnergy(totalEnergy)}</p>
-                    {rowCount > 0 && (
+        <div className="flex m-2">
+            <Card className="h-max min-w-[880px]">
+                <div className="flex">
+                    <div className="flex flex-col items-start m-4">
                         <p>
-                            Dimensions: {10 * rowCount} ft x {maxWidth} ft
+                            <b>Estimated Cost:</b> {formatMoney(cost)}
                         </p>
-                    )}
+                        <p>
+                            <b>Total Energy:</b> {formatEnergy(totalEnergy)}
+                        </p>
+                        {rowCount > 0 && (
+                            <p>
+                                <b>Dimensions:</b> {10 * rowCount} ft x{" "}
+                                {maxWidth} ft
+                            </p>
+                        )}
+                    </div>
                 </div>
-                <div className="flex items-center">
+                <SiteMap
+                    deviceCounts={deviceCounts}
+                    setRowCount={setRowCount}
+                    setMaxWidth={setMaxWidth}
+                />
+            </Card>
+            <Card className="mx-4 h-fit">
+                <div className="flex flex-col items-center">
                     <p>Keys:</p>
                     {Object.keys(colorMap).map((key) => (
                         <div key={key} className={`m-2 p-2 ${colorMap[key]}`}>
@@ -45,12 +59,7 @@ export const Estimates = ({ deviceCounts }: EstimatesProps) => {
                         </div>
                     ))}
                 </div>
-            </div>
-            <SiteMap
-                deviceCounts={deviceCounts}
-                setRowCount={setRowCount}
-                setMaxWidth={setMaxWidth}
-            />
-        </Card>
+            </Card>
+        </div>
     );
 };

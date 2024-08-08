@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import { Device, DeviceCount } from "../models/device";
 import { colorMap } from "../utils/colorMap";
+import { constructSiteMap } from "../utils/siteMap";
 
 interface SiteMapProps {
     deviceCounts: DeviceCount[];
     setRowCount: (rowCount: number) => void;
     setMaxWidth: (maxWidth: number) => void;
 }
-
-const MAX_WIDTH = 100;
 
 export const SiteMap = ({
     deviceCounts,
@@ -19,32 +18,10 @@ export const SiteMap = ({
     const [rows, setRows] = useState<Device[][]>([]);
 
     useEffect(() => {
-        const newRows: Device[][] = [];
-        let currentRow: Device[] = [];
-        let maxWidth = 0;
-        let currentWidth = 0;
-
-        for (let i = 0; i < deviceCounts.length; i++) {
-            const deviceCount = deviceCounts[i];
-
-            for (let j = 0; j < deviceCount.count; j++) {
-                if (currentWidth + deviceCount.device.widthFt > MAX_WIDTH) {
-                    newRows.push(currentRow);
-                    currentRow = [];
-                    maxWidth = Math.max(maxWidth, currentWidth);
-                    currentWidth = 0;
-                }
-
-                currentRow.push(deviceCount.device);
-                currentWidth += deviceCount.device.widthFt;
-            }
-        }
-
-        if (currentRow.length > 0) newRows.push(currentRow);
-        maxWidth = Math.max(maxWidth, currentWidth);
+        const { newRows, rowCount, maxWidth } = constructSiteMap(deviceCounts);
 
         setMaxWidth(maxWidth);
-        setRowCount(newRows.length);
+        setRowCount(rowCount);
         setRows(newRows);
     }, [deviceCounts]);
 

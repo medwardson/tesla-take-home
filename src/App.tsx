@@ -32,7 +32,7 @@ const App = () => {
             <header className="App-header p-2">
                 <h2>Site Layout Estimator</h2>
             </header>
-            <div className="flex">
+            <div className="flex overflow-scroll m-2">
                 <DeviceList
                     devices={devices}
                     deviceCounts={deviceCounts}

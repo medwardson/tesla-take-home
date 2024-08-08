@@ -13,7 +13,7 @@ export const DeviceList = ({
     updateCount,
 }: DeviceListProps) => {
     return (
-        <div className="overflow-scroll w-3/12">
+        <div className="w-2/12">
             <ul>
                 {devices.map((device, i) => {
                     return (
