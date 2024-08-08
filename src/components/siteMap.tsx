@@ -26,7 +26,7 @@ export const SiteMap = ({
     }, [deviceCounts]);
 
     return (
-        <Card className="m-2 p-4 overflow-scroll h-fit">
+        <Card raised={true} className="m-2 p-4 overflow-scroll h-fit">
             <div className="flex flex-col items-start">
                 <h2 className="text-lg font-bold">Site Map</h2>
                 <div>
@@ -55,6 +55,7 @@ const DeviceTile = ({ device }: { device: Device }) => {
                 colorMap[device.name] ?? ""
             }`}
             style={{
+                // tailwind says w-[10px] should specify specific size, but it doesn't work
                 width: device.widthFt * 8,
                 height: device.heightFt * 5,
             }}

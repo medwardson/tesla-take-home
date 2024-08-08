@@ -27,21 +27,27 @@ export const Estimates = ({ deviceCounts }: EstimatesProps) => {
 
     return (
         <div className="flex m-2">
-            <Card className="h-max min-w-[880px]">
+            <Card className="h-max min-w-[850px]">
                 <div className="flex">
                     <div className="flex flex-col items-start m-4">
-                        <p>
-                            <b>Estimated Cost:</b> {formatMoney(cost)}
-                        </p>
-                        <p>
-                            <b>Total Energy:</b> {formatEnergy(totalEnergy)}
-                        </p>
-                        {rowCount > 0 && (
-                            <p>
-                                <b>Dimensions:</b> {10 * rowCount} ft x{" "}
-                                {maxWidth} ft
+                        {[
+                            {
+                                name: "Estimated Cost",
+                                value: formatMoney(cost),
+                            },
+                            {
+                                name: "Total Energy",
+                                value: formatEnergy(totalEnergy),
+                            },
+                            {
+                                name: "Dimensions",
+                                value: `${10 * rowCount} ft x ${maxWidth} ft`,
+                            },
+                        ].map((item) => (
+                            <p key={item.name}>
+                                <b>{item.name}:</b> {item.value}
                             </p>
-                        )}
+                        ))}
                     </div>
                 </div>
                 <SiteMap
@@ -50,11 +56,16 @@ export const Estimates = ({ deviceCounts }: EstimatesProps) => {
                     setMaxWidth={setMaxWidth}
                 />
             </Card>
-            <Card className="mx-4 h-fit">
+            <Card className="mx-4 p-4 h-fit">
                 <div className="flex flex-col items-center">
-                    <p>Keys:</p>
+                    <p>
+                        <b>Keys:</b>
+                    </p>
                     {Object.keys(colorMap).map((key) => (
-                        <div key={key} className={`m-2 p-2 ${colorMap[key]}`}>
+                        <div
+                            key={key}
+                            className={`w-full my-1 mx-2 p-2 ${colorMap[key]}`}
+                        >
                             {key}
                         </div>
                     ))}
