@@ -51,7 +51,9 @@ export const SiteMap = ({
 const DeviceTile = ({ device }: { device: Device }) => {
     return (
         <div
-            className={`border m-1 p-2 ${colorMap[device.name] ?? ""}`}
+            className={`border-4 border-white p-2 ${
+                colorMap[device.name] ?? ""
+            }`}
             style={{
                 width: device.widthFt * 8,
                 height: device.heightFt * 5,
