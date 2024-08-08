@@ -56,21 +56,27 @@ export const Estimates = ({ deviceCounts }: EstimatesProps) => {
                     setMaxWidth={setMaxWidth}
                 />
             </Card>
-            <Card className="mx-4 p-4 h-fit">
-                <div className="flex flex-col items-center">
-                    <p>
-                        <b>Keys:</b>
-                    </p>
-                    {Object.keys(colorMap).map((key) => (
-                        <div
-                            key={key}
-                            className={`w-full my-1 mx-2 p-2 ${colorMap[key]}`}
-                        >
-                            {key}
-                        </div>
-                    ))}
-                </div>
-            </Card>
+            <Legend {...colorMap} />
         </div>
+    );
+};
+
+const Legend = (dict: { [key: string]: string }) => {
+    return (
+        <Card className="mx-4 p-4 h-fit">
+            <div className="flex flex-col items-center">
+                <p>
+                    <b>Keys:</b>
+                </p>
+                {Object.keys(dict).map((key) => (
+                    <div
+                        key={key}
+                        className={`w-full my-1 mx-2 p-2 ${colorMap[key]}`}
+                    >
+                        {key}
+                    </div>
+                ))}
+            </div>
+        </Card>
     );
 };
