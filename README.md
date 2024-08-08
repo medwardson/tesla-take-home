@@ -1,5 +1,12 @@
 # Tesla Take Home Challenge
 
+In order to run the code, run the following command in the terminal:
+
+```bash
+npm install
+npm run start
+```
+
 ## Problem Statement
 
 Given a predefined list of batteries, their cost, size, and capacity, demonstrate to a potenital customer what their costs, land requirements, and energy will be for a given selection of batteries.
@@ -14,10 +21,3 @@ Given a predefined list of batteries, their cost, size, and capacity, demonstrat
 -   I considered adding redux to simplify some of the handoff of data but it felt like overkill for the size of the project.
 
 It was a pretty enjoyable project overall, thanks for the opportunity!
-
-In order to run the code, run the following command in the terminal:
-
-```bash
-npm install
-npm run start
-```
