@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { formatEnergy, formatMoney } from "../utils/string";
 import { DeviceCount } from "../models/device";
-import { colorMap } from "../utils/colorMap";
+import { colorMap } from "../data/colorMap";
 import { SiteMap } from "./siteMap";
 import { Card } from "@mui/material";
 

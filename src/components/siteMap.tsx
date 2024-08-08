@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import { Device, DeviceCount } from "../models/device";
-import { colorMap } from "../utils/colorMap";
+import { colorMap } from "../data/colorMap";
 import { constructSiteMap } from "../utils/siteMap";
 
 interface SiteMapProps {
